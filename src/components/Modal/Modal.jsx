@@ -1,5 +1,11 @@
-<div class="overlay">
-  <div class="modal">
-    <img src="" alt="" />
-  </div>
-</div>
+const Modal = ({imgUrl}) => {
+  return (
+    <div className="Overlay">
+      <div className="Modal">
+        <img src={imgUrl} alt="sosok" />
+      </div>
+    </div>
+  );
+};
+
+export default Modal;

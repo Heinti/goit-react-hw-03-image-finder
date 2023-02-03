@@ -1,11 +1,13 @@
 
 
-//  const ImageGalleryItem = ({ id, webformatURL,  }) => {
-//   return (
-//     <li key={id} className="gallery-item">
-//       <img src={webformatURL} alt="sosok" />
-//     </li>
-//   );
-// };
+ const ImageGalleryItem = ({ webformatURL, largeImageURL, getLargeUrl  }) => {
+  return (
+    <li className="ImageGalleryItem" >
+      <img src={webformatURL} alt="sosok"
+        onClick={()=> getLargeUrl(largeImageURL)}
+      className="ImageGalleryItem-image" />
+    </li>
+  );
+};
 
-// export default ImageGalleryItem
+export default ImageGalleryItem
