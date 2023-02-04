@@ -1,4 +1,4 @@
-
+import PropTypes from 'prop-types';
 
 const Button = ({onLoadMore}) =>{
 return(
@@ -7,3 +7,7 @@ return(
 }
 
 export default Button;
+
+Button.propTypes ={
+onLoadMore: PropTypes.func.isRequired
+}

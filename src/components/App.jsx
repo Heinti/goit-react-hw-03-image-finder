@@ -18,6 +18,8 @@ export class App extends Component {
     totalHits: 0,
     page: 1,
     errorLoading: null,
+    id: '',
+    isModalOpen: false,
   };
 
   async componentDidUpdate(_, prevState) {
@@ -58,13 +60,19 @@ export class App extends Component {
     });
   };
 
-  getLargeUrl = value => {
+  getLargeUrl = (value, id) => {
     this.setState({
       imageModalUrl: value,
-    });
+      id,
+    })
+    this.toggleModal();
   };
+
+  toggleModal = (e)=>{
+    this.setState(({isModalOpen}) =>({isModalOpen: !isModalOpen}))
+  }
   render() {
-    const { errorLoading, galleryValue, isLoading, imageModalUrl } = this.state;
+    const { errorLoading, galleryValue, isLoading, imageModalUrl, totalHits, isModalOpen, id } = this.state;
 
     return (
       <div className="App">
@@ -72,8 +80,8 @@ export class App extends Component {
         {errorLoading && <p>Ooops.. something goes wrong : {errorLoading}</p>}
         {isLoading && <Loader />}
         <ImageGallery data={galleryValue} getLargeUrl={this.getLargeUrl} />
-        {imageModalUrl && <Modal imgUrl={imageModalUrl} />}
-        {galleryValue.length > 0 && <Button onLoadMore={this.loadMore}/>}
+        {isModalOpen && <Modal imgUrl={imageModalUrl} id={id} onModal={this.toggleModal} />}
+        {totalHits / 12 >= 1 && <Button onLoadMore={this.loadMore} />}
       </div>
     );
   }
