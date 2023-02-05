@@ -38,6 +38,7 @@ export class App extends Component {
         this.setState({ errorLoading: error });
       } finally {
         this.setState({ isLoading: false });
+        
       }
     }
   }
@@ -78,10 +79,10 @@ export class App extends Component {
       <div className="App">
         <Searchbar onSubmit={this.getAPIImages} isSubmiting={isLoading} />
         {errorLoading && <p>Ooops.. something goes wrong : {errorLoading}</p>}
+        {galleryValue.length > 0 && <ImageGallery data={galleryValue} getLargeUrl={this.getLargeUrl} />}
         {isLoading && <Loader />}
-        <ImageGallery data={galleryValue} getLargeUrl={this.getLargeUrl} />
         {isModalOpen && <Modal imgUrl={imageModalUrl} id={id} onModal={this.toggleModal} />}
-        {totalHits / 12 >= 1 && <Button onLoadMore={this.loadMore} />}
+        {totalHits / 12 >= 1 && !isLoading && <Button onLoadMore={this.loadMore} />}
       </div>
     );
   }
