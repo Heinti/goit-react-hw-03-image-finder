@@ -20,7 +20,7 @@ const ImageGallery = ({ data, getLargeUrl }) => {
 export default ImageGallery;
 
 ImageGallery.propTypes = {
-  imglist: PropTypes.arrayOf(
+  data: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,
       webformatURL: PropTypes.string.isRequired,
